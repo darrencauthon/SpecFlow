@@ -30,8 +30,8 @@ namespace TechTalk.SpecFlow.Bindings
         {
             var stepTransformation = GetMatchingStepTransformation(values, typeToConvertTo, cultureInfo, true);
 
-            if (stepTransformation == null)
-                throw new SpecFlowException("The StepTransformationConverter cannot convert the specified value.");
+            //if (stepTransformation == null)
+                //throw new SpecFlowException("The StepTransformationConverter cannot convert the specified value.");
 
             if (stepTransformation.Method.Parameters.Count() > 1  && values.Count>1)
             {
@@ -49,10 +49,10 @@ namespace TechTalk.SpecFlow.Bindings
         {
             var stepTransformations = bindingRegistry.GetStepTransformations().Where(t => CanConvert(t, values, typeToConvertTo, cultureInfo)).ToArray();
 
-            if (stepTransformations.Length > 1 && traceWarning)
-            {
-                testTracer.TraceWarning(string.Format("Multiple step transformation matches to the input ({0}, target type: {1}). We use the first.", values.Peek(), typeToConvertTo));
-            }
+            //if (stepTransformations.Length > 1 && traceWarning)
+            //{
+                //testTracer.TraceWarning(string.Format("Multiple step transformation matches to the input ({0}, target type: {1}). We use the first.", values.Peek(), typeToConvertTo));
+            //}
 
             return stepTransformations.FirstOrDefault();
         }
@@ -62,10 +62,10 @@ namespace TechTalk.SpecFlow.Bindings
             if (!stepTransformationBinding.Method.ReturnType.TypeEquals(typeToConvertTo))
                 return false;
 
-            if (stepTransformationBinding.Regex != null && !(values.Peek() is string))
-            {
-                return false;
-            }
+            //if (stepTransformationBinding.Regex != null && !(values.Peek() is string))
+            //{
+                //return false;
+            //}
 
             object[] arguments;
             if (stepTransformationBinding.Method.Parameters.Count() > 1 && values.Count > 1)
