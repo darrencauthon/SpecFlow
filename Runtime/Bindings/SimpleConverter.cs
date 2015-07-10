@@ -13,10 +13,10 @@ namespace TechTalk.SpecFlow.Bindings
             var value = values.Dequeue();
             var runtimeType = (RuntimeBindingType)typeToConvertTo;
 
-            if (runtimeType.Type.IsEnum && value is string)
-                return Enum.Parse(runtimeType.Type, ((string)value).Replace(" ", ""), true);
+            if (runtimeType.Type.IsEnum)
+                return Enum.Parse(runtimeType.Type, ((string)value), true);
 
-            if (runtimeType.Type == typeof(Guid?) && string.IsNullOrEmpty(value as string))
+            if (runtimeType.Type == typeof(Guid?) && (string)value == "")
                 return null;
 
             if (runtimeType.Type == typeof(Guid) || runtimeType.Type == typeof(Guid?))
